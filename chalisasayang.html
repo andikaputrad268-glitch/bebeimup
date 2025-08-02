@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hai Sayangku!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      border: 3px dashed #fff;
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff69b4;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .hidden-content {
+      margin-top: 25px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 1s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      max-height: 1000px;
+    }
+
+    .message {
+      color: #fff;
+      font-size: 1.05em;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 130px;
+      border-radius: 20px;
+      border: 3px solid white;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: explode 1s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(2);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="itsyou.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="card">
+    <h1>Happy Girlfriend Day 💖</h1>
+    <button onclick="showLove()">Klik Di Sini Sayang</button>
+
+    <div id="content" class="hidden-content">
+      <div class="message">
+        Makasih ya udah selalu sabar, kuat, dan setia.  
+        Aku tau kamu hebat banget bisa jalanin semuanya walaupun berat.  
+        Kamu satu-satunya orang yang aku pilih dan sayang sepenuh hati 🫶  
+        Love you forever 💘
+      </div>
+      <img src="https://media.discordapp.net/attachments/1390684447619154022/1395381023134449685/IMG-20250713-WA0048.jpg?ex=688e03d8&is=688cb258&hm=6a090a8c583a7d0b9cbdfedfe24ce8d8ee55c81a573977081051712ccbc6a8a3&=&format=webp&width=481&height=856" alt="Foto Cewekku">
+    </div>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("content").classList.add("visible");
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+        heart.style.left = (window.innerWidth / 2) + "px";
+        heart.style.top = (window.innerHeight / 2) + "px";
+        heart.style.setProperty("--x", `${(Math.random() - 0.5) * 300}px`);
+        heart.style.setProperty("--y", `${(Math.random() - 0.5) * 300}px`);
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 1000);
+      }
+    }
+  </script>
+</body>
+</html>
